@@ -15,10 +15,11 @@ def main():
         the list without extra spaces, duplicates, and with all names in title case.
 
     """
-    cleaned_names = []
+    cleaned_names = set()
 
     messy_names = [
         "  alice ",
+        "x",
         "Bob",
         " charlie",
         "Alice",
@@ -34,13 +35,11 @@ def main():
 
     # Remove spaces
     for n in messy_names:
-        c = n.strip().title()
-        if c not in cleaned_names:
-            cleaned_names.append(c)
+        cleaned_names.add(n.strip().title())
 
-    cleaned_names.sort()
+    sorted_cleaned_names = sorted(cleaned_names)
     print("Cleaned and Sorted Names:")
-    for c in cleaned_names:
+    for c in sorted_cleaned_names:
         print(c)
 
 
